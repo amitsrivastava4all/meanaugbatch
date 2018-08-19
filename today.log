@@ -1,0 +1,123 @@
+var a;
+undefined
+typeof(a);
+"undefined"
+a=100;
+100
+typeof(a);
+"number"
+a=100.200;
+100.2
+typeof(a);
+"number"
+a=10000000;
+10000000
+typeof(a);
+"number"
+a= "Hello";
+"Hello"
+typeof(a);
+"string"
+a='Hello';
+"Hello"
+typeof(a);
+"string"
+a=`gdnjkdfhgjdfjkghkjdfhgjkdfhgkjhdfkjghkjdfgkjhdfkjghdfjkghjkd
+kgjdfkhgjkhdfg
+gdfgdfkjhgjkhfd
+gf
+dgf
+fdg
+df
+g`
+"gdnjkdfhgjdfjkghkjdfhgjkdfhgkjhdfkjghkjdfgkjhdfkjghdfjkghjkd
+kgjdfkhgjkhdfg
+gdfgdfkjhgjkhfd
+gf
+dgf
+fdg
+df
+g"
+a;
+"gdnjkdfhgjdfjkghkjdfhgjkdfhgkjhdfkjghkjdfgkjhdfkjghdfjkghjkd
+kgjdfkhgjkhdfg
+gdfgdfkjhgjkhfd
+gf
+dgf
+fdg
+df
+g"
+a= 100;
+100
+b = 200;
+200
+c = "Sum is "+a+" " + b+ " "+a+b;
+"Sum is 100 200 100200"
+c= `Sum is ${a}   ${b} ${a+b}`
+"Sum is 100   200 300"
+a = true;
+true
+typeof(a);
+"boolean"
+100 + true;
+101
+a= 100;
+100
+++a;
+101
+var obj = {id:1001,name:'Ram',salary:9999};
+undefined
+typeof(obj);
+"object"
+obj.id;
+1001
+obj instanceof Object;
+true
+typeof(Object);
+"function"
+class Q{
+
+}
+undefined
+typeof(Q);
+"function"
+var t = obj;
+undefined
+t;
+{id: 1001, name: "Ram", salary: 9999}
+obj;
+{id: 1001, name: "Ram", salary: 9999}
+t.id++;
+1001
+t;
+{id: 1002, name: "Ram", salary: 9999}
+obj;
+{id: 1002, name: "Ram", salary: 9999}
+var m = [10,20,30,40];
+undefined
+typeof(m);
+"object"
+m instanceof Array;
+true
+m instanceof Object;
+true
+function test(){
+console.log("I am Test Function ");
+}
+undefined
+test();
+VM2096:2 I am Test Function 
+undefined
+typeof(test);
+"function"
+var f = test;
+undefined
+typeof (f);
+"function"
+f;
+ƒ test(){
+console.log("I am Test Function ");
+}
+f();
+VM2096:2 I am Test Function 
+undefined
