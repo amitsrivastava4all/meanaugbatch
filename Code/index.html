@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/calc.js"></script>
+    <script src="js/logic.js"></script>
+
+</head>
+
+<body>
+
+    <h2>Calc App</h2>
+    <table>
+        <tr>
+            <td><label for="">First Number</label></td>
+            <td><input id="first" type="text" placeholder="Type First Number"></td>
+        </tr>
+        <tr>
+            <td><label for="">Second Number</label></td>
+            <td><input id="second" type="text" placeholder="Type Second Number"></td>
+        </tr>
+        <tr>
+            <td><label for="">Result</label></td>
+            <td><span id="result"></span></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <!--table>tr>(td>button)*4 -->
+                <table>
+                    <tr>
+                        <td><button onclick="compute('add')">+</button></td>
+                        <td><button onclick="compute('sub')">-</button></td>
+                        <td><button onclick="compute('mul')">*</button></td>
+                        <td><button onclick="compute('div')">/</button></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+
+</body>
+
+</html>
