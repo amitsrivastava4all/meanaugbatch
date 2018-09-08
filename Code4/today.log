@@ -1,0 +1,377 @@
+var x= [10,20,30,40,50,10,90,10];
+undefined
+x.filter(function(currentValue){
+	return currentValue ==10;
+});
+(3) [10, 10, 10]
+var y = x.filter(function(currentValue){
+	return currentValue ==10;
+});
+undefined
+y;
+(3) [10, 10, 10]
+y.length;
+3
+x.filter(currentValue=>currentValue==10).length;
+3
+function payroll(){
+console.log('Payroll ');
+var hra= function(){
+console.log('hra');
+}
+var da = function(){
+console.log('da');
+}
+hra();
+da();
+}
+undefined
+payroll();
+VM1958:2 Payroll 
+VM1958:4 hra
+VM1958:7 da
+undefined
+function payroll(){
+console.log('Payroll ');
+var hra= function(){
+console.log('hra');
+}
+var da = function(){
+console.log('da');
+}
+return [hra,da];
+//hra();
+//da();
+}
+undefined
+var t = payroll();
+VM2027:2 Payroll 
+undefined
+t;
+(2) [ƒ, ƒ]0: ƒ ()1: ƒ ()length: 2__proto__: Array(0)
+t[0]();
+VM2027:4 hra
+undefined
+t[1]();
+VM2027:7 da
+undefined
+payroll()[0]();
+VM2027:2 Payroll 
+VM2027:4 hra
+undefined
+t();
+VM2329:1 Uncaught TypeError: t is not a function
+    at <anonymous>:1:1
+(anonymous) @ VM2329:1
+typeof (t);
+"object"
+t instanceof Array;
+true
+typeof(t[0]);
+"function"
+function payroll(){
+var salary = 10000;
+console.log('Payroll ');
+var hra= function(){
+console.log('hra '+salary);
+}
+var da = function(){
+console.log('da '+salary);
+}
+return [hra,da];
+//hra();
+//da();
+}
+undefined
+function show(){
+disp();
+console.log("show ");
+}
+function disp(){
+output();
+console.log("Disp ");
+}
+function output(){
+console.log("Output ");
+}
+show();
+VM3040:10 Output 
+VM3040:7 Disp 
+VM3040:3 show 
+undefined
+function payroll(){
+var salary = 10000;
+console.log('Payroll ');
+var hra= function(){
+console.log('hra '+salary);
+}
+var da = function(){
+console.log('da '+salary);
+}
+return [hra,da];
+//hra();
+//da();
+}
+undefined
+payroll();
+VM3124:3 Payroll 
+(2) [ƒ, ƒ]
+var g = payroll();
+VM3124:3 Payroll 
+undefined
+g;
+(2) [ƒ, ƒ]
+g[0]();
+VM3124:5 hra 10000
+undefined
+function payroll(){
+var salary = 10000;
+console.log('Payroll ');
+var hra= function(hraVal){
+salary = (salary + hraVal)
+console.log('hra '+ salary);
+}
+var da = function(){
+console.log('da '+salary);
+}
+return [hra,da];
+//hra();
+//da();
+}
+undefined
+var g = payroll();
+VM3510:3 Payroll 
+undefined
+g[0]();
+VM3510:6 hra NaN
+undefined
+g[0](1000);
+VM3510:6 hra NaN
+undefined
+function payroll(){
+var salary = 10000;
+console.log('Payroll ');
+var hra= function(hraVal){
+console.log("Salary "+salary+" Hra "+hraVal);
+salary = (salary + hraVal)
+console.log('hra '+ salary);
+}
+var da = function(){
+console.log('da '+salary);
+}
+return [hra,da];
+//hra();
+//da();
+}
+undefined
+var t= payroll();
+VM3649:3 Payroll 
+undefined
+t[0](2000);
+VM3649:5 Salary 10000 Hra 2000
+VM3649:7 hra 12000
+undefined
+function payroll(){
+var salary = 10000;
+console.log('Payroll ');
+return [
+function(){
+console.log("HRA .....");
+},function(){
+	console.log("DA ");
+}
+];
+// var hra= function(hraVal){
+// console.log("Salary "+salary+" Hra "+hraVal);
+// salary = (salary + hraVal)
+// console.log('hra '+ salary);
+// }
+// var da = function(){
+// console.log('da '+salary);
+// }
+//return [hra,da];
+//hra();
+//da();
+}
+undefined
+payroll();
+VM4387:3 Payroll 
+(2) [ƒ, ƒ]0: ƒ ()1: ƒ ()length: 2__proto__: Array(0)
+function payroll(){
+var salary = 10000;
+console.log('Payroll ');
+return [
+function HRA(){
+console.log("HRA .....");
+},function DA(){
+	console.log("DA ");
+}
+];
+// var hra= function(hraVal){
+// console.log("Salary "+salary+" Hra "+hraVal);
+// salary = (salary + hraVal)
+// console.log('hra '+ salary);
+// }
+// var da = function(){
+// console.log('da '+salary);
+// }
+//return [hra,da];
+//hra();
+//da();
+}
+undefined
+function payroll(){
+var salary = 10000;
+console.log('Payroll ');
+var hra= function HRA(hraVal){
+console.log("Salary "+salary+" Hra "+hraVal);
+salary = (salary + hraVal)
+console.log('hra '+ salary);
+}
+var da = function DA(){
+console.log('da '+salary);
+}
+return [hra,da];
+//hra();
+//da();
+}
+undefined
+payroll();
+VM4476:3 Payroll 
+(2) [ƒ, ƒ]0: ƒ HRA(hraVal)1: ƒ DA()length: 2__proto__: Array(0)
+function payroll(){
+var salary = 10000;
+console.log('Payroll ');
+var hra= function (hraVal){
+console.log("Salary "+salary+" Hra "+hraVal);
+salary = (salary + hraVal)
+console.log('hra '+ salary);
+}
+var da = function (){
+console.log('da '+salary);
+}
+return [hra,da];
+//hra();
+//da();
+}
+undefined
+payroll();
+VM4517:3 Payroll 
+(2) [ƒ, ƒ]0: ƒ (hraVal)1: ƒ ()length: 2__proto__: Array(0)
+t[0].name;
+"hra"
+function payroll(){
+var salary = 10000;
+console.log('Payroll ');
+var hra= function (hraVal){
+console.log("Salary "+salary+" Hra "+hraVal);
+salary = (salary + hraVal)
+console.log('hra '+ salary);
+}
+var da = function (){
+console.log('da '+salary);
+}
+return {"hra":hra,"da":da};
+//hra();
+//da();
+}
+undefined
+var tt = payroll();
+VM4798:3 Payroll 
+undefined
+tt;
+{hra: ƒ, da: ƒ}
+tt.da();
+VM4798:10 da 10000
+undefined
+function payroll(){
+var salary = 10000;
+console.log('Payroll ');
+var hra= function (hraVal){
+console.log("Salary "+salary+" Hra "+hraVal);
+salary = (salary + hraVal)
+console.log('hra '+ salary);
+}
+var da = function (){
+console.log('da '+salary);
+}
+return {"hra":hra,"da":da};
+//hra();
+//da();
+}
+undefined
+function payroll(){
+var salary = 10000;
+console.log('Payroll ');
+var hra= function (hraVal){
+console.log("Salary "+salary+" Hra "+hraVal);
+salary = (salary + hraVal)
+console.log('hra '+ salary);
+}
+var da = function (){
+console.log('da '+salary);
+}
+da = 1000;
+return {"hra":hra,"da":da};
+//hra();
+//da();
+}
+undefined
+var gg = payroll();
+VM4984:3 Payroll 
+undefined
+gg;
+{hra: ƒ, da: 1000}
+gg.da;
+1000
+gg.da();
+VM5040:1 Uncaught TypeError: gg.da is not a function
+    at <anonymous>:1:4
+(anonymous) @ VM5040:1
+function payroll(){
+var salary = 10000;
+console.log('Payroll ');
+var hra= function (hraVal){
+console.log("Salary "+salary+" Hra "+hraVal);
+salary = (salary + hraVal)
+console.log('hra '+ salary);
+}
+const da = function (){
+console.log('da '+salary);
+}
+da = 1000;
+return {"hra":hra,"da":da};
+//hra();
+//da();
+}
+undefined
+function payroll(){
+var salary = 10000;
+console.log('Payroll ');
+var hra= function (hraVal){
+console.log("Salary "+salary+" Hra "+hraVal);
+salary = (salary + hraVal)
+console.log('hra '+ salary);
+}
+const da = function (){
+console.log('da '+salary);
+}
+da = 1000;
+return {"hra":hra,"da":da};
+//hra();
+//da();
+}
+undefined
+payroll();
+VM5097:3 Payroll 
+VM5097:12 Uncaught TypeError: Assignment to constant variable.
+    at payroll (<anonymous>:12:4)
+    at <anonymous>:1:1
+payroll @ VM5097:12
+(anonymous) @ VM5130:1
+x;
+(8) [10, 20, 30, 40, 50, 10, 90, 10]
+x.sort((a,b)=>a-b);
+(8) [10, 10, 10, 20, 30, 40, 50, 90]
+x.sort((a,b)=>b-a);
+(8) [90, 50, 40, 30, 20, 10, 10, 10]
