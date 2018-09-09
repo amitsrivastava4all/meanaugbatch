@@ -1,0 +1,347 @@
+var x = [10,20,30,40,50];
+undefined
+var obj = {id:1001, name:'Ram'};
+undefined
+var y  = x[0];
+undefined
+console.log("Your Name is ",obj.name);
+VM219:1 Your Name is  Ram
+undefined
+var [a,,,e] = x;
+undefined
+a;
+10
+e;
+40
+var [a,b] = [10,20];
+undefined
+a;
+10
+b;
+20
+[a,b] = [b,a];
+(2) [20, 10]
+a;
+20
+b;
+10
+var {id, name} = obj;
+undefined
+id;
+1001
+name;
+"Ram"
+function print(){
+console.log("Id is "+id+" name is "+name +" Obj :: "+obj);
+console.log("Id is ",id," name is ",name, "Obj ",obj);
+}
+undefined
+print();
+VM1053:2 Id is 1001 name is Ram Obj :: [object Object]
+VM1053:3 Id is  1001  name is  Ram Obj  {id: 1001, name: "Ram"}
+undefined
+function print(){
+console.log("Id is "+id+" name is "+name +" Obj :: "+obj);
+console.log("Id is ",id," name is ",name, "Obj ",obj);
+console.log(`Id is ${id} Name is ${name} Obj is ${obj}`);
+}
+undefined
+print();
+VM1214:2 Id is 1001 name is Ram Obj :: [object Object]
+VM1214:3 Id is  1001  name is  Ram Obj  {id: 1001, name: "Ram"}
+VM1214:4 Id is 1001 Name is Ram Obj is [object Object]
+undefined
+function print({id,name}){
+console.log("Id is "+id+" name is "+name +" Obj :: "+obj);
+console.log("Id is ",id," name is ",name, "Obj ",obj);
+console.log(`Id is ${id} Name is ${name} Obj is ${obj}`);
+}
+print(obj);
+VM1357:2 Id is 1001 name is Ram Obj :: [object Object]
+VM1357:3 Id is  1001  name is  Ram Obj  {id: 1001, name: "Ram"}
+VM1357:4 Id is 1001 Name is Ram Obj is [object Object]
+undefined
+var counter = 1;
+function count(){
+console.log("Count is ",counter);
+counter++;
+}
+undefined
+counter();
+VM1699:1 Uncaught TypeError: counter is not a function
+    at <anonymous>:1:1
+(anonymous) @ VM1699:1
+count();
+VM1672:3 Count is  1
+undefined
+count();
+VM1672:3 Count is  2
+undefined
+count();
+VM1672:3 Count is  3
+undefined
+count();
+VM1672:3 Count is  4
+undefined
+function setCount(){
+var c = 1;
+var getCount = function(){
+console.log("Count is ",c);
+c++;
+}
+return getCount;
+}
+undefined
+var r = setCount();
+undefined
+r();
+VM1847:4 Count is  1
+undefined
+r();
+VM1847:4 Count is  2
+undefined
+r();
+VM1847:4 Count is  3
+undefined
+var showCount = (function(){
+var c = 0 ;
+var getCount = function(){
+	return ++c;
+}
+return getCount;
+})()
+undefined
+showCount();
+1
+showCount();
+2
+showCount();
+3
+showCount();
+4
+function* countDown(){
+yield 1;
+yield 2;
+yield 3;
+yield 4;
+yield 5;
+yield 6;
+
+}
+undefined
+var e = countDown();
+undefined
+e;
+countDown {<suspended>}
+e.next();
+{value: 1, done: false}
+e.next().value;
+2
+e.next().value;
+3
+e.next().value;
+4
+e.next();
+{value: 5, done: false}
+e.next();
+{value: 6, done: false}
+e.next();
+{value: undefined, done: true}
+function* countVal(){
+var d = 1;
+while(true){
+yield d;
+d++;
+}
+}
+undefined
+var d1 = countVal();
+undefined
+d1.next().value;
+1
+d1.next().value;
+2
+d1.next().value;
+3
+d1.next().value;
+4
+d1.next().value;
+5
+d1.next().value;
+6
+d1.next().value;
+7
+d1.next().value;
+8
+d1.next().value;
+9
+function otp(){
+yield "A102";
+yield "A111";
+}
+VM2937:2 Uncaught SyntaxError: Unexpected string
+function* otp(){
+yield "A102";
+yield "A111";
+}
+undefined
+var f = otp();
+undefined
+f.next().value;
+"A102"
+function show(){
+console.log("Show call ");
+}
+undefined
+show();
+VM3151:2 Show call 
+undefined
+show(10);
+VM3151:2 Show call 
+undefined
+show(10,20);
+VM3151:2 Show call 
+undefined
+show([10,20,30],()=>console.log("My Function "), true, "Hello");
+VM3151:2 Show call 
+undefined
+console.dir(show);
+VM3308:1 ƒ show()arguments: nullcaller: nulllength: 0name: "show"prototype: {constructor: ƒ}__proto__: ƒ ()[[FunctionLocation]]: VM3151:1[[Scopes]]: Scopes[1]
+undefined
+function show(){
+console.log("Show call ", arguments.length);
+}
+undefined
+show([10,20,30],()=>console.log("My Function "), true, "Hello");
+VM3377:2 Show call  4
+undefined
+show(10,20);
+VM3377:2 Show call  2
+undefined
+show(10);
+VM3377:2 Show call  1
+undefined
+show();
+VM3377:2 Show call  0
+undefined
+function test(...a){
+console.log("A is ",a.length);
+}
+undefined
+test();
+VM3546:2 A is  0
+undefined
+test(10,20);
+VM3546:2 A is  2
+undefined
+function test(...a){
+console.log("A is ",a.length);
+var sum =0;
+for(let y of a){
+sum+=y;
+}
+return sum;
+}
+undefined
+test(10,20);
+VM3701:2 A is  2
+30
+test(10,20,30,40,50);
+VM3701:2 A is  5
+150
+var d = [10,20,30];
+undefined
+var r = [90,100,10];
+undefined
+var m = [d,r];
+undefined
+m;
+(2) [Array(3), Array(3)]0: Array(3)0: 101: 202: 30length: 3__proto__: Array(0)1: (3) [90, 100, 10]length: 2__proto__: Array(0)
+m = [...d,...r];
+(6) [10, 20, 30, 90, 100, 10]
+m;
+(6) [10, 20, 30, 90, 100, 10]
+var obj = {id:1001, name:'Ram'};
+undefined
+var obj2 = {salary:9999, hra :2222};
+undefined
+var obj3 = {...obj,...obj2};
+undefined
+obj3;
+{id: 1001, name: "Ram", salary: 9999, hra: 2222}
+function Product(id, name,price, desc, photo, qt){
+    this.id = id;
+    this.name = name;
+    this.price = price || 100;
+    this.desc = desc || "";
+    this.photo = photo;
+    this.qt = qt;
+    this.isAdded = false;
+    this.toggle= function(){
+          this.isAdded = !this.isAdded;
+    }
+}
+undefined
+typeof(Product);
+"function"
+var mobile = new Product(1001,"Apple",99999,"Mobile","apple.png",10);
+undefined
+typeof(mobile);
+"object"
+mobile instanceof Product;
+true
+console.dir(Product);
+VM5251:1 ƒ Product(id, name,price, desc, photo, qt)arguments: nullcaller: nulllength: 6name: "Product"prototype: {constructor: ƒ}constructor: ƒ Product(id, name,price, desc, photo, qt)__proto__: constructor: ƒ Object()hasOwnProperty: ƒ hasOwnProperty()isPrototypeOf: ƒ isPrototypeOf()propertyIsEnumerable: ƒ propertyIsEnumerable()toLocaleString: ƒ toLocaleString()toString: ƒ toString()valueOf: ƒ valueOf()__defineGetter__: ƒ __defineGetter__()__defineSetter__: ƒ __defineSetter__()__lookupGetter__: ƒ __lookupGetter__()__lookupSetter__: ƒ __lookupSetter__()get __proto__: ƒ __proto__()set __proto__: ƒ __proto__()__proto__: ƒ ()apply: ƒ apply()arguments: (...)bind: ƒ bind()call: ƒ call()caller: (...)constructor: ƒ Function()length: 0name: ""toString: ƒ toString()Symbol(Symbol.hasInstance): ƒ [Symbol.hasInstance]()get arguments: ƒ ()set arguments: ƒ ()get caller: ƒ ()set caller: ƒ ()__proto__: Object[[FunctionLocation]]: <unknown>[[Scopes]]: Scopes[0][[FunctionLocation]]: VM5095:1[[Scopes]]: Scopes[1]
+undefined
+function disp(){
+console.log("I am Disp");
+}
+undefined
+disp();
+VM5606:2 I am Disp
+undefined
+var e = new disp();
+VM5606:2 I am Disp
+undefined
+console.dir(Product);
+VM5663:1 ƒ Product(id, name,price, desc, photo, qt)arguments: nullcaller: nulllength: 6name: "Product"prototype: constructor: ƒ Product(id, name,price, desc, photo, qt)__proto__: Objectconstructor: ƒ Object()hasOwnProperty: ƒ hasOwnProperty()isPrototypeOf: ƒ isPrototypeOf()propertyIsEnumerable: ƒ propertyIsEnumerable()toLocaleString: ƒ toLocaleString()toString: ƒ toString()valueOf: ƒ valueOf()__defineGetter__: ƒ __defineGetter__()__defineSetter__: ƒ __defineSetter__()__lookupGetter__: ƒ __lookupGetter__()__lookupSetter__: ƒ __lookupSetter__()get __proto__: ƒ __proto__()set __proto__: ƒ __proto__()__proto__: ƒ ()[[FunctionLocation]]: VM5095:1[[Scopes]]: Scopes[1]
+undefined
+Product;
+ƒ Product(id, name,price, desc, photo, qt){
+    this.id = id;
+    this.name = name;
+    this.price = price || 100;
+    this.desc = desc || "";
+    this.photo = photo;
+    this.qt = qt;
+    this.isAdded…
+Product.prototype.print=function(){
+console.log("I am Print ");
+}
+ƒ (){
+console.log("I am Print ");
+}
+mobile.print();
+VM5969:2 I am Print 
+undefined
+mobile.toggle();
+undefined
+mobile;
+Product {id: 1001, name: "Apple", price: 99999, desc: "Mobile", photo: "apple.png", …}desc: "Mobile"id: 1001isAdded: truename: "Apple"photo: "apple.png"price: 99999qt: 10toggle: ƒ ()__proto__: Object
+Array.prototype.show=function(){
+console.log("I am Show");
+}
+ƒ (){
+console.log("I am Show");
+}
+var w = [10,20];
+undefined
+w.show();
+VM6127:2 I am Show
+undefined
+class CC {
+}
+class EE extends CC{
+
+}
+undefined
