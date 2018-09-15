@@ -1,0 +1,106 @@
+console.log("I am Sync Task ");
+var a =100;
+var b = 200;
+
+setTimeout(function(){
+console.log(" Before Loop :::");
+            for (let i = 1; i <= 100000; i++) {
+                for (let j = 1; j <= 100000; j++) {
+
+                }
+            }
+            console.log("After Loop");
+}, 10000);
+var c = a + b;
+console.log("Sum is "+c);
+VM1279:1 I am Sync Task 
+VM1279:15 Sum is 300
+undefined
+VM1279:6  Before Loop :::
+VM1279:12 After Loop
+console.log("I am Sync Task ");
+var a =100;
+var b = 200;
+
+var e = setTimeout(function(){
+console.log(" Before Loop :::");
+            for (let i = 1; i <= 100000; i++) {
+                for (let j = 1; j <= 100000; j++) {
+
+                }
+            }
+
+            console.log("After Loop");
+	return "I am Done";
+}, 10000);
+console.log("E is ",e);
+var c = a + b;
+console.log("Sum is "+c);
+VM2048:1 I am Sync Task 
+VM2048:16 E is  2
+VM2048:18 Sum is 300
+undefined
+VM2048:6  Before Loop :::
+VM2048:13 After Loop
+e;
+2
+console.log("I am Sync Task ");
+var a =100;
+var b = 200;
+
+var e = setTimeout(function(){
+console.log(" Before Loop :::");
+            for (let i = 1; i <= 100000; i++) {
+                for (let j = 1; j <= 100000; j++) {
+
+                }
+            }
+
+            console.log("After Loop");
+print("I am Done");	
+//return "I am Done";
+}, 10000);
+function print(rt){
+console.log("this is the return value ",rt);
+}
+console.log("E is ",e);
+var c = a + b;
+console.log("Sum is "+c);
+VM2329:1 I am Sync Task 
+VM2329:20 E is  3
+VM2329:22 Sum is 300
+undefined
+VM2329:6  Before Loop :::
+VM2329:13 After Loop
+VM2329:18 this is the return value  I am Done
+console.log("I am Sync Task ");
+var a =100;
+var b = 200;
+function asyncFunction(fn){
+ setTimeout(function(){
+console.log(" Before Loop :::");
+            for (let i = 1; i <= 100000; i++) {
+                for (let j = 1; j <= 100000; j++) {
+
+                }
+            }
+
+            console.log("After Loop");
+fn("I am Done ");
+//print("I am Done");
+//return "I am Done";
+}, 10000);
+}
+function print(rt){
+console.log("this is the return value ",rt);
+}
+asyncFunction(print);
+//console.log("E is ",e);
+var c = a + b;
+console.log("Sum is "+c);
+VM3290:1 I am Sync Task 
+VM3290:25 Sum is 300
+undefined
+VM3290:6  Before Loop :::
+VM3290:13 After Loop
+VM3290:20 this is the return value  I am Done 

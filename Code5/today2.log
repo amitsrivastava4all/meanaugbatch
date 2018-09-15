@@ -1,0 +1,66 @@
+var p = asyncFunction();
+console.log("Promise is ",p);
+p.then(data=>console.log("Data is ",data)).catch(err=>console.log("Err is ",err));
+console.log("Doing Something Else ");
+function asyncFunction(){
+console.log(" i am in asynchFunction ");
+var pr = new Promise((resolve,reject)=>{
+	 setTimeout(function(){
+console.log(" Before Loop :::");
+            for (let i = 1; i <= 100000; i++) {
+                for (let j = 1; j <= 100000; j++) {
+
+                }
+            }
+
+            console.log("After Loop");
+resolve("I am Done ");
+//fn("I am Done ");
+//print("I am Done");
+//return "I am Done";
+}, 10000);
+
+})
+return pr;
+}
+
+VM447:6  i am in asynchFunction 
+VM447:2 Promise is  Promise {<pending>}
+VM447:4 Doing Something Else 
+undefined
+VM447:9  Before Loop :::
+VM447:16 After Loop
+VM447:3 Data is  I am Done 
+var p = asyncFunction();
+console.log("Promise is ",p);
+p.then(data=>console.log("Data is :::: ",data)).catch(err=>console.log("Err is ",err));
+console.log("Doing Something Else ");
+function asyncFunction(){
+console.log(" i am in asynchFunction ");
+var pr = new Promise((resolve,reject)=>{
+	 setTimeout(function(){
+console.log(" Before Loop :::");
+            for (let i = 1; i <= 100000; i++) {
+                for (let j = 1; j <= 100000; j++) {
+
+                }
+            }
+
+            console.log("After Loop");
+resolve("I am Done ");
+//fn("I am Done ");
+//print("I am Done");
+//return "I am Done";
+}, 10000);
+
+})
+return pr;
+}
+
+VM728:6  i am in asynchFunction 
+VM728:2 Promise is  Promise {<pending>}
+VM728:4 Doing Something Else 
+undefined
+VM728:9  Before Loop :::
+VM728:16 After Loop
+VM728:3 Data is ::::  I am Done 
