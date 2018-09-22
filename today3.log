@@ -1,0 +1,129 @@
+async function cube(num){
+	console.log("Cube Call ",num);
+	var pr = new Promise((resolve, reject)=>{
+    	resolve(num**3);
+},5000);
+return pr;
+}
+undefined
+Promise.all([cube(2), cube(3), cube(5)]).then(data=>{
+console.log("Data is ",data);
+}).catch(err=>{
+console.log("Error is ",err);
+});
+VM330:2 Cube Call  2
+VM330:2 Cube Call  3
+VM330:2 Cube Call  5
+VM582:2 Data is  (3) [8, 27, 125]
+Promise {<resolved>: undefined}
+async function cube(num){
+	console.log("Cube Call ",num);
+	var pr = new Promise((resolve, reject)=>{
+    	resolve(num**3);
+},5000);
+console.log("Cube Ends ",num);
+return pr;
+}
+undefined
+Promise.all([cube(2), cube(3), cube(5)]).then(data=>{
+console.log("Data is ",data);
+}).catch(err=>{
+console.log("Error is ",err);
+});
+VM675:2 Cube Call  2
+VM675:6 Cube Ends  2
+VM675:2 Cube Call  3
+VM675:6 Cube Ends  3
+VM675:2 Cube Call  5
+VM675:6 Cube Ends  5
+VM679:2 Data is  (3) [8, 27, 125]
+Promise {<resolved>: undefined}
+async function total(){
+return await cube(2) + await cube(3) + await cube(5);
+}
+undefined
+total().then(data=>{
+console.log("Total is ",total);
+}).catch(err=>console.log("Error is ",err);
+VM1008:3 Uncaught SyntaxError: missing ) after argument list
+total().then(data=>{
+console.log("Total is ",total);
+}).catch(err=>console.log("Error is ",err));
+VM675:2 Cube Call  2
+VM675:6 Cube Ends  2
+VM675:2 Cube Call  3
+VM675:6 Cube Ends  3
+VM675:2 Cube Call  5
+VM675:6 Cube Ends  5
+VM1020:2 Total is  async ƒ total(){
+return await cube(2) + await cube(3) + await cube(5);
+}
+Promise {<resolved>: undefined}
+total().then(data=>{
+console.log("Total is ",total);
+}).catch(err=>console.log("Error is ",err));
+VM675:2 Cube Call  2
+VM675:6 Cube Ends  2
+VM675:2 Cube Call  3
+VM675:6 Cube Ends  3
+VM675:2 Cube Call  5
+VM675:6 Cube Ends  5
+VM1053:2 Total is  async ƒ total(){
+return await cube(2) + await cube(3) + await cube(5);
+}
+Promise {<resolved>: undefined}
+total().then(data=>{
+console.log("Total is ",data);
+}).catch(err=>console.log("Error is ",err));
+VM675:2 Cube Call  2
+VM675:6 Cube Ends  2
+VM675:2 Cube Call  3
+VM675:6 Cube Ends  3
+VM675:2 Cube Call  5
+VM675:6 Cube Ends  5
+VM1126:2 Total is  160
+Promise {<resolved>: undefined}
+async function cube(num){
+	console.log("Cube Call ",num);
+	var pr = new Promise((resolve, reject)=>{
+setTimeout(()=>{
+resolve(num**3);
+},5000);
+    });
+console.log("Cube Ends ",num);
+return pr;
+}
+undefined
+Promise.all([cube(2), cube(3), cube(5)]).then(data=>{
+console.log("Data is ",data);
+}).catch(err=>{
+console.log("Error is ",err);
+});
+VM1247:2 Cube Call  2
+VM1247:8 Cube Ends  2
+VM1247:2 Cube Call  3
+VM1247:8 Cube Ends  3
+VM1247:2 Cube Call  5
+VM1247:8 Cube Ends  5
+Promise {<pending>}
+VM1272:2 Data is  (3) [8, 27, 125]
+total().then(data=>{
+console.log("Total is ",data);
+}).catch(err=>console.log("Error is ",err));
+VM1247:2 Cube Call  2
+VM1247:8 Cube Ends  2
+Promise {<pending>}
+VM1247:2 Cube Call  3
+VM1247:8 Cube Ends  3
+VM1247:2 Cube Call  5
+VM1247:8 Cube Ends  5
+VM1290:2 Total is  160
+async function total(){
+//return await cube(2) + await cube(3) + await cube(5);
+await cube(2);
+// Some Processing
+
+await cube(3);
+
+}
+undefined

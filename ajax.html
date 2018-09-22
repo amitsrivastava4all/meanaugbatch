@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ajax Demo</title>
+    <script>
+        function doAjax() {
+            var pid = document.querySelector("#playerid").value;
+
+            if (pid == 0) {
+                alert("Select the Player First ");
+                return;
+            }
+            var url = "http://cricapi.com/api/playerStats?pid=" + pid + "&apikey=A8zoDoPaQgefmB7KunnSuApSgL73";
+            var pr = fetch(url);
+            pr.then(response => {
+                response.json().then(data => {
+                    console.log("Data is ", data);
+                    var imageDiv = document.querySelector("#img");
+                    imageDiv.innerHTML = "";
+                    var img = document.createElement("img");
+                    img.src = data.imageURL;
+                    imageDiv.appendChild(img);
+                    var str = "Batting Style " + data.battingStyle + " Born " + data.born + " Name is " + data.fullName
+                    document.querySelector("#result").innerHTML = str;
+                }).catch(err => {
+                    alert("Invalid JSON ");
+                })
+            }).catch(err => {
+                alert("Server Error ");
+            })
+        }
+    </script>
+</head>
+
+<body>
+    <select id="playerid" onchange="doAjax()">
+        <option value="0">Select Player</option>
+        <option value="35320">Sachin</option>
+        <option value="28081">Dhoni</option>
+    </select>
+    <div id="img"></div>
+    <div id="result"></div>
+</body>
+
+</html>
