@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        .size {
+            width: 100px;
+            height: 100px;
+        }
+        
+        .box {
+            border-color: red;
+            border-width: 2px;
+            border-style: solid;
+        }
+        
+        .red {
+            color: red;
+        }
+        
+        .green {
+            color: green;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="angular.min.js"></script>
+</head>
+
+<body ng-app>
+    <input ng-init="salary=0" type="text" placeholder="Type Salary" ng-model="salary">
+    <p ng-class="{'red':salary<10000,'green':salary>=10000}">Salary is {{salary}}</p>
+    <input ng-model="myname" type="text" placeholder="Type Name Here">
+    <h2>Your Name is {{myname}} </h2>
+    <input ng-init="showhide=false" type="checkbox" ng-model="showhide"> Show / Hide {{showhide}}
+    <div ng-show="showhide" class="box">
+        Show Me
+    </div>
+    <hr>
+    <!-- <ul ng-init="fruits=['Apple','Orange','Banana']">
+        <li ng-repeat="fruit in fruits">
+            {{fruit}}
+        </li>
+    </ul> -->
+    Sort By
+    <select ng-model="sort">
+        <option >Select</option>
+        <option >price</option>
+        <option >name</option>
+    </select>
+    <input type="checkbox" ng-model="reverse">Asc/Desc
+    <ul ng-init="mobiles={'data':[{'id':1001,'name':'Samsung Mobile','price':30000,'url':'http://c2c.sulekhalive.com/lcproducts/mobiles/images/samsung/album/large/samsung-z3(2).jpg'},{'id':1002,'name':'Apple Mobile','price':40000,'url':'https://4.imimg.com/data4/LY/WP/GLADMIN-8934545/apple-mobiles-500x500.jpg'},{'id':1003,'name':'Lg Mobile','price':20000,'url':'http://www.lg.com/uk/images/mobile-phones/MD05609550/stylus-350.jpg'},{'id':1004,'name':'MI Mobile','price':10000,'url':'https://www.91-img.com/pictures/xiaomi-mi-5s-mobile-phone-large-1.jpg'}]}">
+        <input type="text" placeholder="Type to Search" ng-model="search.price">
+        <li ng-repeat="mobile in mobiles.data|filter:search|limitTo:2|orderBy:sort:reverse">
+            <h3>{{mobile.name|uppercase}}</h3>
+            <img class="size" src="{{mobile.url}}" alt="">
+            <p> {{mobile.price|currency:'&#8377;'}}</p>
+        </li>
+    </ul>
+</body>
+
+</html>
