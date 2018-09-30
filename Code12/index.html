@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MVC Demo</title>
+    <style>
+        .red {
+            color: red;
+        }
+        
+        .green {
+            color: green;
+        }
+        
+        .size {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+    <script src="libs/angular.min.js"></script>
+    <script src="app.js"></script>
+    <script src="logic.js"></script>
+    <script src="model.js"></script>
+    <script src="controller.js"></script>
+</head>
+
+<body ng-app="shopapp">
+    <div ng-controller="myctrl">
+        <label for="">Enter Salary</label>
+        <input type="text" ng-model="salary" placeholder="Type Salary">
+        <button ng-click="compute()">Compute</button>
+        <button ng-click="doAjax()">callAjax</button> Error is {{error}}
+        <input type="text" ng-model="search" placeholder="Type to Search">
+        <ul>
+            <li ng-repeat="mobile in data.data.mobiles|filter:search">
+                <img class="size" ng-src="{{mobile.url}}" alt=""> {{mobile.id}} {{mobile.name}} {{mobile.url}} {{mobile.price}}
+                <button>Add to Cart</button>
+            </li>
+        </ul>
+        <hr>
+        <table>
+            <tr class="{{className}}">
+                <td>HRA</td>
+                <td>{{hra}}</td>
+            </tr>
+            <tr>
+                <td>DA</td>
+                <td>{{da}}</td>
+            </tr>
+        </table>
+
+    </div>
+    <div>
+
+    </div>
+</body>
+
+</html>
