@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CRUD App</title>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="scripts/item.js"></script>
+    <script src="scripts/app2.js"></script>
+    <script src="scripts/itemoperations.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controller.js"></script>
+</head>
+
+<body ng-app="myapp" ng-controller="myctrl">
+    <div class="container">
+        <h2 class="alert-success">CRUD Application</h2>
+        <div class="form-group">
+            <label for="">Id</label>
+            <input ng-model="item.id" type="text" placeholder="Type Id" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="">Name</label>
+            <input ng-model="item.name" type="text" placeholder="Type Name" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="">Desc</label>
+            <textarea ng-model="item.desc" class="form-control" placeholder="Type Desc" cols="30" rows="10"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="">Price</label>
+            <input ng-model="item.price" type="range" class="form-control" min="1" step="100" max="5000"> {{item.price}}
+        </div>
+        <div class="form-group">
+            <label for="">Color</label>
+            <input ng-model="item.color" type="color" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="">Date</label>
+            <input ng-model="item.date" type="date" class="form-control">
+        </div>
+        <div class="form-group">
+            <button ng-click="add()" class="btn btn-primary">Add</button>
+            <button class="btn btn-danger">Delete</button>
+            <button class="btn btn-light">Search</button>
+            <button class="btn btn-warning">Upate</button>
+            <button class="btn btn-success" ng-click="save()">Save</button>
+            <button class="btn btn-dark" ng-click="load()">Load</button>
+            <button class="btn btn-info">Sort</button>
+            <button class="btn btn-primary">Load From Server</button>
+            <button class="btn btn-default">Clear All</button>
+        </div>
+        <h3>Total Records are {{items.length}} Mark Records {{markCount}}</h3>
+        <table class="table table-striped table-bordered table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Desc</th>
+                    <th>Price</th>
+                    <th>Color</th>
+                    <th>Date</th>
+                    <th>Operations</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- <tr ng-class="{'table-danger':item.price<2000,'table-success':item.price>=2000}" ng-repeat="item in items"> -->
+                <tr ng-class="{'table-danger':item.markForDelete}" ng-repeat="item in items">
+                    <td>{{item.id}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.desc}}</td>
+                    <td>{{item.price}}</td>
+                    <td>{{item.color}}</td>
+                    <td>{{item.date}}</td>
+                    <td><i ng-click="mark(item.id)" class="fas fa-trash"></i></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</body>
+
+</html>
