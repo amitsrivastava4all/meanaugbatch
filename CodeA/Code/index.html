@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .red {
+            color: red;
+        }
+        
+        input.ng-valid {
+            border-color: green;
+        }
+        
+        input.ng-invalid {
+            border-color: red;
+        }
+    </style>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script>
+        const app = angular.module("myapp", []);
+        app.controller("myctrl", ($scope) => {
+            $scope.doSubmit = (f1) => {
+                if (f1.$invalid) {
+                    alert("Can't Submit");
+                } else {
+                    alert("Submit");
+                }
+            }
+        });
+    </script>
+</head>
+
+<body ng-app="myapp" ng-controller="myctrl">
+    <form ng-submit="doSubmit(f1)" novalidate name="f1">
+        <input type="text" name="fname" ng-model="fname" required pattern="[a-zA-Z]{3,10}" placeholder="Type FirstName Here">
+        <span class="red" ng-show="f1.fname.$touched && f1.fname.$invalid && f1.fname.$error['required']">First Name Can't Be Blank</span>
+        <span class="red" ng-show="f1.fname.$touched && f1.fname.$invalid && f1.fname.$error['pattern']">First Name Must be b/w 3 to 10 Characters</span>
+        <input type="text" name="lname" ng-model="lname" required placeholder="Type LastName Here">
+        <button>Login</button>
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,21 @@
+{
+  "name": "validationdemo",
+  "authors": [
+    "amitsrivastava4all <amitsrivastava4all@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.7.5",
+    "angular-route": "^1.7.5"
+  }
+}
