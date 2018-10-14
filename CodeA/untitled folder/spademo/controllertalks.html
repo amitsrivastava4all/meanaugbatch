@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script>
+        const app = angular.module("myapp", []);
+        app.factory("myfactory", () => {
+            return {
+                x: 1
+            }
+        })
+        app.controller("myctrl", ($scope, $rootScope, myfactory) => {
+            $scope.name = "Ram";
+            $rootScope.myname = $scope.name;
+            $scope.setName = () => {
+                $scope.newname = $scope.name;
+                myfactory.x++;
+            }
+        })
+        app.controller("myctrl2", ($scope) => {
+            $scope.lastName = "Kumar";
+        })
+        app.controller("myctrl3", ($scope, myfactory) => {
+            $scope.lastName = "Kumar";
+            $scope.getData = () => {
+                $scope.data = myfactory.x;
+            }
+        })
+    </script>
+</head>
+
+<body ng-app="myapp">
+    <div ng-controller="myctrl">
+        First {{name}} Last {{lastName}}
+        <input type="text" ng-model="name" ng-change="setName()" placeholder="Type Name"> Parent
+        <div ng-controller="myctrl2">
+            Child First {{name}} Last {{lastName}}
+        </div>
+    </div>
+    <hr>
+    <div ng-controller="myctrl3">
+        Third Div {{myname}}
+        <button ng-click="getData()">Get {{data}}</button>
+    </div>
+
+</body>
+
+</html>
