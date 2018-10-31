@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="angular.min.js"></script>
+</head>
+
+<body>
+    <div ng-app="myapp" ng-controller="myctrl">
+
+        <p>Count Value is :: {{msg}}</p>
+        Old Value is {{oldValue}} and New Value is {{newValue}}
+        <button id="ok">Ok</button>
+        <button ng-click="cancel()">Cancel</button>
+        <input type="text" placeholder="WATCH TXT BOX" ng-model="txtName" />
+    </div>
+    <script>
+        var counter = 1;
+        var app = angular.module("myapp", []);
+        app.controller("myctrl", function($scope) {
+            $scope.count = 1;
+            $scope.cancel = function() {
+                    $scope.msg = "U Clicked on Cancel " + counter;
+                    counter++;
+                }
+                //$scope.$watch('count')
+            $scope.$watch('txtName', function(newVal, oldVal, scope) {
+                $scope.oldValue = oldVal;
+                $scope.newValue = newVal;
+                //alert("Txt Change "+newVal+" "+oldVal);
+            });
+
+            document.getElementById("ok").addEventListener("click", function() {
+                //$scope.msg = "Hello " + counter;
+
+                $scope.$digest();
+                /* $scope.$apply(function() {
+                     ////                //alert("Some Changes Happen... ");
+                     $scope.msg = "Hello " + counter;
+                 });*/
+                counter++;
+                console.log("Counter is ", counter);
+                //Or
+                //$scope.msg="Hello"+counter;
+                //$scope.$digest(); // It is a continuous process and watch the changes and call the apply for changes
+                // $digest () watch for changes in the scope and call $apply method to make the changes.
+
+            });
+
+        });
+    </script>
+</body>
+
+</html>

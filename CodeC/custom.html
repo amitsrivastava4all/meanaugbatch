@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myapp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel='stylesheet' href='//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css'>
+    <script src='https://code.jquery.com/jquery-1.12.4.js'>
+    </script>
+    <script src='https://code.jquery.com/ui/1.12.1/jquery-ui.js'></script>
+    <script src="angular.min.js"></script>
+
+    <script>
+        const app = angular.module("myapp", []);
+        app.factory("myfactory", () => {
+            return {
+                compute(price, qt) {
+                    return price * qt;
+                }
+            }
+        })
+        app.controller("myctrl", ($scope, myfactory) => {
+            $scope.computeIt = () => {
+                $scope.result = myfactory.compute($scope.price, $scope.qt);
+            }
+        })
+        app.directive("tcsHead", () => {
+            return {
+                templateUrl: './head.html'
+
+            }
+        })
+
+        app.directive("tcsHeader", () => {
+            return {
+                templateUrl: './header.html',
+                restrict: 'E' //template: '
+            }
+        })
+
+
+        app.directive("calendar", () => {
+            return {
+                link: (scope, element, attrs) => {
+                    console.log("Element is ", element[0].id, " Mon is ", attrs.calendar);
+                    element.datepicker({
+                        numberOfMonths: parseInt(attrs.calendar),
+                        showButtonPanel: true
+                    });
+                }
+            }
+        })
+        app.filter("titlecase", () => {
+            return (str, arg, arg2) => {
+                if (str) {
+                    return str.charAt(0).toUpperCase() + str.substring(arg, arg2).toLowerCase();
+                } else {
+                    return "";
+                }
+            }
+        })
+    </script>
+
+</head>
+
+<body>
+
+    <tcs-header></tcs-header>
+    <input type="text" ng-model="name"> {{name|uppercase}}
+    <br> Now Name is {{name|titlecase:3:6}}
+    <br> Date :: <input type="text" calendar="2"> Date2
+    <input type="text" calendar="3">
+
+</body>
+
+</html>
