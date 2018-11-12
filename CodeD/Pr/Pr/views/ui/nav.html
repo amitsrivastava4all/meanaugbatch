@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+    <img src="../../assets/images/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+    <a class="navbar-brand" href="#">Test Engine</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" ng-href="#/">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item" ng-if="!isLoggedIn">
+                <a class="nav-link" ng-href="#/login">Login</a>
+            </li>
+            <li class="nav-item" ng-if="!isLoggedIn">
+                <a class="nav-link" ng-href="#/register">Register</a>
+            </li>
+            <li class="nav-item" ng-if="isLoggedIn" ng-repeat="menu in menus">
+                <a class="nav-link" ng-href="#{{menu.link}}">{{menu.name}}</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" ng-href="#/contactus">Contact Us</a>
+            </li>
+
+        </ul>
+
+    </div>
+</nav>
