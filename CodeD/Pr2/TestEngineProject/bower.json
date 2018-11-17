@@ -1,0 +1,25 @@
+{
+  "name": "testengineproject",
+  "authors": [
+    "amitsrivastava4all <amitsrivastava4all@gmail.com>"
+  ],
+  "description": "this is a sample project for learning",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.7.5",
+    "bootstrap": "^4.1.3",
+    "angular-route": "^1.7.5",
+    "jquery": "^3.3.1",
+    "jqlite": "^1.1.1",
+    "angularfire": "^2.3.0"
+  }
+}

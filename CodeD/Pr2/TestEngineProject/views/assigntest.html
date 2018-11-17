@@ -1,0 +1,12 @@
+<div ng-controller="usergroupcontroller">
+    <h1> Assign Test</h1>
+    <h3>{{message}}</h3>
+    <br> Select Test
+    <select ng-model="test">
+    <option ng-repeat="test in distinctTest">{{test}}</option>
+</select> Select Group
+    <select ng-model="group">
+        <option ng-repeat="group in distinctGroup">{{group}}</option>
+    </select>
+    <button class='btn btn-info' ng-click='add()'>Assign Test</button>
+</div>

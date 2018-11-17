@@ -1,0 +1,25 @@
+<div ng-controller="usercontroller">
+    <h1>Add Group</h1>
+    <h3>{{message}}</h3>
+    <input type="text" class="form-control" placeholder="Add Group Name" ng-model="groupname">
+    <button class="btn btn-info" ng-click="getAllUsers()">Load Users</button>
+    <button class="btn btn-success" ng-click="addGroup()">Add New Group</button>
+    <table class='table table-bordered table-striped'>
+        <thead>
+            <tr>
+                <th><input type="checkbox" ng-change="selectAll()" ng-model="selectall"></th>
+                <th>S.no</th>
+                <th>UserName</th>
+            </tr>
+
+        </thead>
+        <tbody>
+            <tr ng-repeat="user in students">
+                <td><input ng-click="user.isSelected=!user.isSelected" type="checkbox" ng-model="user.isSelected" ng-checked="selectall"> </td>
+
+                <td>{{$index+1}}</td>
+                <td>{{user.userid}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
