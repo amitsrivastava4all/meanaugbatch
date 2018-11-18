@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Test Engine App</title>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-route/angular-route.min.js"></script>
+    <script src="bower_components/firebase/firebase.js"></script>
+    <script src="bower_components/angularfire/dist/angularfire.min.js"></script>
+    <script src="scripts/utils/firebase.js "></script>
+    <script src="scripts/app2.js"></script>
+    <script src="scripts/services/roleservice.js"></script>
+
+    <script src="scripts/filters/titlecase.js"></script>
+    <script src="scripts/app.js "></script>
+    <script src="scripts/services/usergroupservice.js"></script>
+    <script src="scripts/utils/constants.js "></script>
+    <script src="scripts/controllers/maincontroller.js"></script>
+    <script src="scripts/controllers/usercontroller.js "></script>
+    <script src="scripts/controllers/questioncontroller.js"></script>
+    <script src="scripts/controllers/usergroupcontroller.js"></script>
+    <script src="scripts/routing.js "></script>
+</head>
+
+<body ng-app="testengine" ng-controller="maincontroller">
+
+    <div class="container-fluid ">
+
+        <div ng-include="'views/ui/nav.html'">
+
+        </div>
+        <div ng-if="isLoggedIn">
+            <h3>{{message}}</h3>
+            <!-- <h3>{{message}} &nbsp; {{username|titlecase}}</h3> -->
+            <button class="btn btn-danger" ng-click="logout()">Logout</button>
+        </div>
+        <ng-view></ng-view>
+
+        <h3>Footer</h3>
+    </div>
+</body>
+
+</html>

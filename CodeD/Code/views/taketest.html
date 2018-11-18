@@ -1,0 +1,41 @@
+<div ng-controller="questioncontroller">
+
+    <div ng-show="!showTest">
+        <h1>Take Test</h1>
+        <h2>Welcome {{userid}}</h2>
+        <h3>Group Name is </h3>
+        <ul>
+            <li ng-repeat="group in groups">
+                {{group}}
+            </li>
+        </ul>
+        <h3>Tests Assign to You</h3>
+        <li ng-repeat="test in tests">
+            <button class='btn btn-primary' ng-click="startTest(test)">{{test}}</button>
+        </li>
+    </div>
+    <div ng-show="showTest && !scoreCard">
+        <p>{{question}}</p>
+        <input ng-click="storeAns(questionObject,'a')" ng-model="ans" value="a" name="ans" type="radio">{{optiona}}
+        <br>
+        <input ng-click="storeAns(questionObject,'b')" ng-model="ans" value="b" name="ans" type="radio">{{optionb}}
+        <br>
+        <input ng-click="storeAns(questionObject,'c')" ng-model="ans" value="c" name="ans" type="radio">{{optionc}}
+        <br>
+        <input ng-click="storeAns(questionObject,'d')" ng-model="ans" value="d" name="ans" type="radio">{{optiond}} Answer {{ans}}
+        <br>
+        <button class='btn btn-dark' ng-click="prev()">Prev</button> &nbsp;&nbsp;
+        <button class='btn btn-dark' ng-click="next()">Next</button>
+        <button class='btn btn-dark' ng-click="finish()">Finish Test</button>
+    </div>
+    <div ng-show="scoreCard">
+        <h2>Score Card </h2>
+        <ul>
+            <li ng-repeat="question in testQuestions">
+                Name {{question.name}} Right Ans {{question.rightans}} Your Ans {{question.yourAns}}
+            </li>
+        </ul>
+        <p>Total Score is {{totalScore}}</p>
+    </div>
+
+</div>

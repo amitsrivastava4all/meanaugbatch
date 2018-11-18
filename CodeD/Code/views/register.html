@@ -1,0 +1,26 @@
+<div class="col-sm-12" ng-controller="usercontroller">
+    <h2 class="alert-success">Register Form</h2>
+    <h3 class="alert-info">{{message}}</h3>
+    <div class="form-group">
+        <label for="">Userid</label>
+        <input class="form-control" ng-model="user.userid" type="text" placeholder="Type Userid Here">
+
+    </div>
+    <div class="form-group">
+        <label for="">Password</label>
+        <input class="form-control" ng-model="user.pwd" type="password" placeholder="Type Password Here">
+
+    </div>
+    <div class="form-group">
+        <label for="">Role</label>
+        <select ng-model="user.role" class="form-control">
+                <option value="none">Select Role</option>
+                <option value="T">Teacher</option>
+                <option value="S">Student</option>
+            </select>
+
+    </div>
+    <div class="form-group">
+        <button ng-click="register()" class="btn btn-success">Register</button>
+    </div>
+</div>
