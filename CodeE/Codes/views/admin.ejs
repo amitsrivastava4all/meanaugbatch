@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script>
+        const app = angular.module("myapp", []);
+        app.controller("myctrl", ($scope, myfactory) => {
+            $scope.message = '';
+            $scope.giveMeData = () => {
+                var pr = myfactory.callServer2();
+                pr.then(function(data) {
+                    $scope.message = data.data.data;
+                }, function(err) {
+                    $scope.message = err;
+                })
+
+            }
+            $scope.doLogin = () => {
+                var userObject = {
+                    "userid": $scope.userid,
+                    "password": $scope.pwd
+                };
+                var pr = myfactory.callExpress(userObject);
+                pr.then(function(data) {
+                    $scope.message = data.data.data;
+                }, function(err) {
+                    $scope.message = err;
+                })
+            }
+        })
+        app.factory("myfactory", ($http, $q) => {
+            const obj = {
+                callExpress(userObject) {
+                    var defer = $q.defer();
+                    $http.post('http://localhost:1234/login', userObject).then(function(data) {
+                        defer.resolve(data);
+                    }, function(err) {
+                        defer.reject(err);
+                    });
+                    return defer.promise;
+                },
+                callServer2() {
+                    var defer = $q.defer();
+                    $http.post('http://localhost:1234/server').then(function(data) {
+                        defer.resolve(data);
+                    }, function(err) {
+                        defer.reject(err);
+                    });
+                    return defer.promise;
+                }
+            }
+            return obj;
+
+        })
+    </script>
+</head>
+
+<body ng-app="myapp" ng-controller="myctrl">
+    <% include ./partials/header.ejs %>
+        <h3>This is Admin Section</h3>
+        <h1>Welcome
+            <%=user%>
+
+        </h1>
+        <button ng-click="giveMeData()">Get Data </button> Data is {{message}}
+        <hr>
+        <% include ./partials/footer.ejs %>
+</body>
+
+</html>

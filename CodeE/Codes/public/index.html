@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        function sendValue(str) {
+            alert("Value is " + str);
+        }
+        window.addEventListener("load", () => {
+            fetch("count").then(res => {
+                res.text().then(result => {
+                    document.querySelector("#counter").innerText = result;
+                }).catch(e => {
+                    console.log("Error in Text ", e);
+                })
+            }).catch(e => {
+                console.log('Error in Call ', e);
+            });
+        })
+    </script>
+</head>
+
+<body>
+    <a href="users">Show Users</a>
+    <h1>Count is <span id="counter"></span></h1>
+    <form action='reg' method='post'>
+        <input type='text' name='userid'>
+        <input type='password' name='pwd'>
+        <input type='submit' value='Register'>
+    </form>
+    <a href="login.html">Login</a>
+    <input type="radio" name="x1" onclick="sendValue(this.value)" value="A">Virtual Machine <br>
+    <input type="radio" name="x1" onclick="sendValue(this.value)" value="B">Vital Machine <br>
+    <input type="radio" name="x1" onclick="sendValue(this.value)" value="C">Both a and b <br>
+
+</body>
+
+</html>
