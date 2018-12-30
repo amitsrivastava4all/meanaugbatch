@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script>
+        const app = angular.module("myapp", []);
+        app.controller("myctrl", ($scope, myfactory) => {
+            $scope.user = {};
+            $scope.message = '';
+            $scope.doLogin = () => {
+                var userObject = {
+                    "userid": $scope.userid,
+                    "password": $scope.pwd
+                };
+                var pr = myfactory.callExpress(userObject);
+                pr.then(function(data) {
+                    $scope.message = data.data.data;
+                    for (let key in $scope.user) {
+                        $scope.user[key] = '';
+                    }
+                    // $scope.userid = '';
+                    //$scope.pwd = '';
+                }, function(err) {
+                    $scope.message = err;
+                })
+            }
+        })
+        app.factory("myfactory", ($http, $q) => {
+            const obj = {
+                callExpress(userObject) {
+                    var defer = $q.defer();
+                    $http.post('http://localhost:1234/login', userObject).then(function(data) {
+                        defer.resolve(data);
+                    }, function(err) {
+                        defer.reject(err);
+                    });
+                    return defer.promise;
+                }
+            }
+            return obj;
+        })
+    </script>
+</head>
+
+
+<body ng-app="myapp">
+
+    <form action="login" method="post">
+        <input type='text' name='userid'>
+        <input type='password' name='password'>
+        <input type='submit' value='Login'>
+    </form>
+
+    <!--
+    <div ng-controller="myctrl">
+        <input ng-model="user.userid" type="text" placeholder="Type Userid Here">
+        <input ng-model="user.pwd" type="password" placeholder="Type Password Here">
+    </div>
+    -->
+</body>
+
+
+</html>
